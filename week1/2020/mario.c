@@ -12,14 +12,14 @@ int main(void)
     while (height < 1 || height > 8);
     
     // Iterates up to the number of times that user entered
-    for (int i = 0; i <= height; i++)
+    for (int i = 1; i <= height; i++)
     {
         // Number of spaces per line
-        for (int x = 0; x < height - i; x++)
+        for (int x = 1; x <= height - i - 1; x++)
         {
             printf(" ");
         }
-        for (int y = 0; y < i; y++)
+        for (int y = 1; y <= i; y++)
         {
             printf("#");
         }
