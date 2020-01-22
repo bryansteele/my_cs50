@@ -15,7 +15,7 @@ int main(void)
     for (int i = 1; i <= height; i++)
     {
         // Number of spaces per line
-        for (int x = 1; x <= height - i - 1; x++)
+        for (int x = 1; x <= height - i; x++)
         {
             printf(" ");
         }
