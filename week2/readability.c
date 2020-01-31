@@ -1,30 +1,55 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
+// PROTOTYPES
 int counts_letters(string str);
 int counts_words(string str);
 int counts_sentences(string str);
 
 int main(void)
 {
-    string text = get_string("Please enter a string of text.\n==> ");
+    // PROMPTS USER TO ENTER SOME TEXT
+    string text = get_string("==> Please enter some text.\n==> ");
 
-    int num_letters = counts_letters(text);
-    int num_words = counts_words(text);
-    int num_sentences = counts_sentences(text);
+    // CALLS FUNCTIONS
+    float num_letters = counts_letters(text);
+    float num_words = counts_words(text);
+    float num_sentences = counts_sentences(text);
 
-    printf("==> %i letter(s)\n", num_letters);
-    printf("==> %i word(s)\n", num_words + 1);
-    printf("==> %i sentence(s)\n", num_sentences);
+    // AVERAGE NUMBER OF LETTERS PER 100 WORDS
+    float l = 100 * (num_letters / num_words);
+
+    // AVERAGE NUMBER OF SENTENCES PER 100 WORDS
+    float s = num_sentences * (100 / num_words);
+
+    // COLEMAN-LIAU FORMULA
+    float i = (0.0588 * l) - (0.296 * s) - 15.8;
+    int index = round(i);
+
+    // PRINTS OUT THE GRADE LEVEL TO WHICH THE TEXT IS
+    if (index >= 16)
+    {
+        printf("==> Grade 16+\n");
+    }
+    else if (index < 1)
+    {
+        printf("==> Before Grade 1\n");
+    }
+    else
+    {
+        printf("==> Grade %i\n", index);
+    }
 }
 
+// COUNTS THE NUMBER OF LETTERS
 int letters = 0;
 int counts_letters(string str)
 {
     for (int i = 0, n = strlen(str); i < n; i++)
     {
-        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <='Z'))
+        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
         {
             letters++;
         }
@@ -32,6 +57,7 @@ int counts_letters(string str)
     return letters;
 }
 
+// COUNTS THE NUMBER OF WORDS
 int words = 0;
 int counts_words(string str)
 {
@@ -42,9 +68,10 @@ int counts_words(string str)
             words++;
         }
     }
-    return words;
+    return words + 1;
 }
 
+// COUNTS THE NUMBER OF SENTENCES
 int sentences = 0;
 int counts_sentences(string str)
 {
