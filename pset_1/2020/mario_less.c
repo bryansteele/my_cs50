@@ -10,7 +10,7 @@ int main(void)
         height = get_int("Please choose a hight from 1 to 8: ");
     }
     while (height < 1 || height > 8);
-    
+
     // Iterates up to the number of times that user entered
     for (int i = 1; i <= height; i++)
     {

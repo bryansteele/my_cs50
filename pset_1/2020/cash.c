@@ -11,10 +11,10 @@ int main(void)
         amount_owed = get_float("Change owed: \n");    
     }
     while (amount_owed <= 0.00);
-   
+
     // Converts the change owed to cents
     int cents = round(amount_owed * 100);
-    
+
     int remaining_change = cents;
     int coins_used = 0;
     
@@ -27,7 +27,7 @@ int main(void)
         coins_used += quarters;
         break;
     }
-    
+
     // Calculates number of dimes
     int dimes = 0;
     while (remaining_change >= 10)
@@ -37,7 +37,7 @@ int main(void)
         coins_used += dimes;
         break;
     }
-    
+
     // Calculates number of nickles
     int nickles = 0;
     while (remaining_change >= 5)
@@ -47,7 +47,7 @@ int main(void)
         coins_used += nickles;
         break;
     }
-    
+
     // Calculates number of pennies
     int pennies = 0;
     while (remaining_change == 1)
@@ -57,6 +57,6 @@ int main(void)
         coins_used += pennies;
         break;
     }
-    
+
     printf("%i\n", coins_used);
 }
