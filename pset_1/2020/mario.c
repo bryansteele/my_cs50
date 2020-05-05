@@ -3,26 +3,37 @@
 
 int main(void)
 {
+    // Prompts user for a height from 1 - 8
     int height;
     do
     {
-        // Prompts user for a hight between 1 and 1 inclusive
-        height = get_int("Please choose a hight from 1 to 8: ");
+        height = get_int("Please enter a height from 1 to 8: ");
     }
     while (height < 1 || height > 8);
-    
-    // Iterates up to the number of times that user entered
+
+    // Produces the height
     for (int i = 1; i <= height; i++)
     {
-        // Number of spaces per line
-        for (int x = 1; x <= height - i; x++)
+        // Produces the 1st set of white space
+        for (int j = 1; j <= height - i; j++)
         {
             printf(" ");
         }
-        for (int y = 1; y <= i; y++)
+
+        // Produces the 1st set of steps
+        for (int k = 1; k <= i; k++)
         {
             printf("#");
         }
+
+        printf("  ");
+
+        // Produces the 2nd set of steps
+        for (int l = 1; l <= i; l++)
+        {
+            printf("#");
+        }
+
         printf("\n");
     }
 }
