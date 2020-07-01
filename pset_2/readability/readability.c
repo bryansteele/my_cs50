@@ -44,9 +44,10 @@ int main(void)
 }
 
 // COUNTS THE NUMBER OF LETTERS
-int letters = 0;
 int counts_letters(string str)
 {
+    int letters = 0;
+
     for (int i = 0, n = strlen(str); i < n; i++)
     {
         if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
@@ -58,9 +59,10 @@ int counts_letters(string str)
 }
 
 // COUNTS THE NUMBER OF WORDS
-int words = 0;
 int counts_words(string str)
 {
+    int words = 0;
+
     for (int i = 0, n = strlen(str); i < n; i++)
     {
         if (str[i] == ' ' && str[i + 1] != ' ')
@@ -72,9 +74,10 @@ int counts_words(string str)
 }
 
 // COUNTS THE NUMBER OF SENTENCES
-int sentences = 0;
 int counts_sentences(string str)
 {
+    int sentences = 0;
+
     for (int i = 0, n = strlen(str); i < n; i++)
     {
         if (str[i] == '.' || str[i] == '!' || str[i] == '?')
